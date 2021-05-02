@@ -21,12 +21,12 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from mido device
 $(call inherit-product, device/xiaomi/ulysse/device.mk)
 
-# Inherit some common Ancient stuff.
-$(call inherit-product, vendor/ancient/config/common_full_phone.mk)
+# Inherit some common ColtOS stuff.
+$(call inherit-product, vendor/colt/config/common.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := ulysse
-PRODUCT_NAME := ancient_ulysse
+PRODUCT_NAME := colt_ulysse
 BOARD_VENDOR := Xiaomi
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Redmi Note 5A
@@ -41,11 +41,11 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
 BUILD_FINGERPRINT := "xiaomi/ugg/ugg:7.1.2/N2G47H/V9.5.8.0.NDKMIFA:user/release-keys"
 
-TARGET_BOOT_ANIMATION_RES := 720
+TARGET_BOOT_ANIMATION_RES := 720x1280
 TARGET_GAPPS_ARCH := arm64
 PRODUCT_PACKAGES += Snap
-ANCIENT_OFFICIAL := true
 
-# Ancient Overlay
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-ancient
-
+# For Device maintainer and CPU Information
+PRODUCT_PROPERTY_OVERRIDES += \
+  ro.colt.maintainer=kadalxgurun \
+  ro.colt.cpu=MSM8937
